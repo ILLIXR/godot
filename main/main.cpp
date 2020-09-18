@@ -79,6 +79,12 @@
 #include "editor/project_manager.h"
 #endif
 
+#include <thread>
+#include <cassert>
+#include "cpu_timer.hpp"
+#include <cmath>
+#include <string>
+
 /* Static members */
 
 // Singletons
@@ -2032,6 +2038,8 @@ bool Main::iteration() {
 
 	//for now do not error on this
 	//ERR_FAIL_COND_V(iterating, false);
+
+	print_timer2 foo("app");
 
 	iterating++;
 
