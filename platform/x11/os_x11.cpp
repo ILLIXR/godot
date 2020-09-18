@@ -1923,6 +1923,9 @@ void OS_X11::handle_key_event(XKeyEvent *p_event, bool p_echo) {
 
 	k->set_pressed(keypress);
 
+	if (keycode == 'q')
+                force_quit = true;
+
 	if (keycode >= 'a' && keycode <= 'z')
 		keycode -= 'a' - 'A';
 
