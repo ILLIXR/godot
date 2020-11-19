@@ -275,6 +275,7 @@ godot_transform GDAPI godot_arvr_get_reference_frame() {
 }
 
 void GDAPI godot_arvr_blit(godot_int p_eye, godot_rid *p_render_target, godot_rect2 *p_rect) {
+  /*
 	// blits out our texture as is, handy for preview display of one of the eyes that is already rendered with lens distortion on an external HMD
 	ARVRInterface::Eyes eye = (ARVRInterface::Eyes)p_eye;
 	RID *render_target = (RID *)p_render_target;
@@ -289,6 +290,7 @@ void GDAPI godot_arvr_blit(godot_int p_eye, godot_rid *p_render_target, godot_re
 
 	VSG::rasterizer->set_current_render_target(RID());
 	VSG::rasterizer->blit_render_target_to_screen(*render_target, screen_rect, 0);
+  */
 }
 
 godot_int GDAPI godot_arvr_get_texid(godot_rid *p_render_target) {
