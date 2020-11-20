@@ -381,10 +381,10 @@ void RasterizerGLES3::output_lens_distorted_to_screen(RID p_render_target, const
 int count = 0;
 void RasterizerGLES3::end_frame(bool p_swap_buffers) {
 	// start timing
-	GLuint query;
+	//GLuint query;
 	GLuint64 elapsed_time = 0;
-	glGenQueries(1, &query);
-	glBeginQuery(GL_TIME_ELAPSED, query);
+	//glGenQueries(1, &query);
+	//glBeginQuery(GL_TIME_ELAPSED, query);
 // --------------------------------------------------------------------------
 
 	if (OS::get_singleton()->is_layered_allowed()) {
@@ -404,17 +404,17 @@ void RasterizerGLES3::end_frame(bool p_swap_buffers) {
 
 // --------------------------------------------------------------------------
 	//end timing & print
-	glEndQuery(GL_TIME_ELAPSED);
+	//glEndQuery(GL_TIME_ELAPSED);
 	// retrieving the recorded elapsed time
 	// wait until the query result is available
-	int done = 0;
-	glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
-	while (!done) {
-		std::this_thread::yield();
-		glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
-	}
+	//int done = 0;
+	//glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
+	//while (!done) {
+	//	std::this_thread::yield();
+	//	glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
+	//}
 	// get the query result
-	glGetQueryObjectui64v(query, GL_QUERY_RESULT, &elapsed_time);
+	//glGetQueryObjectui64v(query, GL_QUERY_RESULT, &elapsed_time);
 	std::cout << "gpu_timer," << "app_gpu1," << count << "," << "0," << "0," << elapsed_time << std::endl;
 	count++;
 

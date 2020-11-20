@@ -4093,10 +4093,10 @@ static int count = 0;
 void RasterizerSceneGLES3::render_scene(const Transform &p_cam_transform, const CameraMatrix &p_cam_projection, bool p_cam_ortogonal, InstanceBase **p_cull_result, int p_cull_count, RID *p_light_cull_result, int p_light_cull_count, RID *p_reflection_probe_cull_result, int p_reflection_probe_cull_count, RID p_environment, RID p_shadow_atlas, RID p_reflection_atlas, RID p_reflection_probe, int p_reflection_probe_pass) {
 
 	// start timers
-	GLuint query;
+	//GLuint query;
 	GLuint64 elapsed_time = 0;
-	glGenQueries(1, &query);
-	glBeginQuery(GL_TIME_ELAPSED, query);
+	//glGenQueries(1, &query);
+	//glBeginQuery(GL_TIME_ELAPSED, query);
 
 	//first of all, make a new render pass
 	render_pass++;
@@ -4587,18 +4587,18 @@ void RasterizerSceneGLES3::render_scene(const Transform &p_cam_transform, const 
 	}
 
 	if (probe) {
-		glEndQuery(GL_TIME_ELAPSED);
+		//glEndQuery(GL_TIME_ELAPSED);
 		// retrieving the recorded elapsed time
 		// wait until the query result is available
-		int done = 0;
-		glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
-		while (!done) {
-			std::this_thread::yield();
-			glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
-		}
+		//int done = 0;
+		//glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
+		//while (!done) {
+		//	std::this_thread::yield();
+		//	glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
+		//}
 
 		// get the query result
-		glGetQueryObjectui64v(query, GL_QUERY_RESULT, &elapsed_time);
+		//glGetQueryObjectui64v(query, GL_QUERY_RESULT, &elapsed_time);
 		std::cout << "gpu_timer," << "app_gpu2," << count << "," << "0," << "0," << elapsed_time << std::endl;
 		count++;
 
@@ -4663,17 +4663,17 @@ void RasterizerSceneGLES3::render_scene(const Transform &p_cam_transform, const 
 	}*/
 	//disable all stuff
 
-	glEndQuery(GL_TIME_ELAPSED);
+	//glEndQuery(GL_TIME_ELAPSED);
 	// retrieving the recorded elapsed time
 	// wait until the query result is available
-	int done = 0;
-	glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
-	while (!done) {
-		std::this_thread::yield();
-		glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
-	}
+	//int done = 0;
+	//glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
+	//while (!done) {
+	//	std::this_thread::yield();
+	//	glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
+	//}
 	// get the query result
-	glGetQueryObjectui64v(query, GL_QUERY_RESULT, &elapsed_time);
+	//glGetQueryObjectui64v(query, GL_QUERY_RESULT, &elapsed_time);
 	std::cout << "gpu_timer," << "app_gpu2," << count << "," << "0," << "0," << elapsed_time << std::endl;
 	count++;
 }
